@@ -1909,7 +1909,17 @@ void LogMessage::SendToLog() EXCLUSIVE_LOCKS_REQUIRED(log_mutex) {
     AlsoErrorWrite(GLOG_FATAL,
                    glog_internal_namespace_::ProgramInvocationShortName(),
                    message);
-    Fail();
+#if defined(__cpp_lib_uncaught_exceptions) && \
+    (__cpp_lib_uncaught_exceptions >= 201411L)
+    if (std::uncaught_exceptions() == 0)
+#else
+    if (!std::uncaught_exception())
+#endif
+    {
+      // Avoid throwing exceptions if the LogMessageFatal destructor is
+      // unwound to prevent a std::terminate.
+      Fail();
+    }
   }
 }
 
@@ -1941,8 +1951,8 @@ NullStreamFatal::~NullStreamFatal() {
   std::abort();
 }
 
-void InstallFailureFunction(logging_fail_func_t fail_func) {
-  g_logging_fail_func = fail_func;
+logging_fail_func_t InstallFailureFunction(logging_fail_func_t fail_func) {
+  return std::exchange(g_logging_fail_func, fail_func);
 }
 
 void LogMessage::Fail() { g_logging_fail_func(); }
@@ -2635,7 +2645,7 @@ LogMessageFatal::LogMessageFatal(const char* file, int line,
                                  const logging::internal::CheckOpString& result)
     : LogMessage(file, line, result) {}
 
-LogMessageFatal::~LogMessageFatal() {
+LogMessageFatal::~LogMessageFatal() noexcept(false) {
   Flush();
   LogMessage::Fail();
 }

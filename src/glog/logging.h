@@ -521,8 +521,9 @@ using PrefixFormatterCallback = void (*)(std::ostream&, const LogMessage&,
 GLOG_EXPORT void InstallPrefixFormatter(PrefixFormatterCallback callback,
                                         void* data = nullptr);
 
-// Install a function which will be called after LOG(FATAL).
-GLOG_EXPORT void InstallFailureFunction(logging_fail_func_t fail_func);
+// Install a function which will be called after LOG(FATAL). Returns the
+// previously set function.
+GLOG_EXPORT logging_fail_func_t InstallFailureFunction(logging_fail_func_t fail_func);
 
 [[deprecated(
     "Use the type-safe std::chrono::minutes EnableLogCleaner overload "
@@ -1409,7 +1410,7 @@ class GLOG_EXPORT LogMessageFatal : public LogMessage {
   LogMessageFatal(const char* file, int line);
   LogMessageFatal(const char* file, int line,
                   const logging::internal::CheckOpString& result);
-  [[noreturn]] ~LogMessageFatal();
+  [[noreturn]] ~LogMessageFatal() noexcept(false);
 };
 
 // A non-macro interface to the log facility; (useful
