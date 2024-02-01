@@ -409,7 +409,7 @@ add_library (glog
   $<TARGET_OBJECTS:glog_internal>
   ${_glog_EMPTY_SOURCE}
 )
-target_compile_features (glog PUBLIC cxx_std_14)
+target_compile_features (glog PUBLIC cxx_std_17)
 
 add_library (glog::glog ALIAS glog)
 
