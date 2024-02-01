@@ -21,6 +21,7 @@ cd build
 cmake .. -DCMAKE_INSTALL_PREFIX=$PREFIX \
         -DCMAKE_BUILD_TYPE=Release \
         -DWITH_GTEST=OFF \
+        -DWITH_GTEST=OFF \
         -DWITH_GFLAGS=ON \
         -DBUILD_SHARED_LIBS=ON
 

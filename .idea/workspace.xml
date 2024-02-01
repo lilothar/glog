@@ -64,15 +64,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="52d4dbbb-ee1f-446a-b3de-bff2d9dfbcae" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/conda/bak.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/conda/bld.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/conda/bld.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/conda/conda_build_config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/conda/environment_linux.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/conda/environment_osx.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/conda/meta.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/conda/run.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conda/bld.sh" beforeDir="false" afterPath="$PROJECT_DIR$/conda/bld.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conda/meta.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/conda/meta.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -408,7 +402,7 @@
       <updated>1706789606496</updated>
       <workItem from="1706789607501" duration="253000" />
       <workItem from="1706789897508" duration="905000" />
-      <workItem from="1706803361598" duration="370000" />
+      <workItem from="1706803361598" duration="735000" />
     </task>
     <servers />
   </component>
