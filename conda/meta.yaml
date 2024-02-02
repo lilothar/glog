@@ -3,7 +3,7 @@
 {% set number = GIT_DESCRIBE_NUMBER %}
 
 package:
-  name: glog-pkg
+  name: ea-glog-pkg
   version: {{ version }}
 
 build:
@@ -20,7 +20,7 @@ source:
   git_url: ../
 
 outputs:
-  - name: glog
+  - name: ea-glog
     script: bld.sh   # [not win]
     script: bld.bat  # [win]
     build:
@@ -29,15 +29,11 @@ outputs:
         - {{ pin_compatible('glog', exact=True) }}
     requirements:
       build:
-        - {{ compiler('cxx') }}
-        - gflags >=2.2.2
-        - sysroot_linux-64 >=2.17  # [linux64]
+        - ea-gflags >=2.2.2
       host:
-        - gflags >=2.2.2
-        - sysroot_linux-64 >=2.17  # [linux64]
+        - ea-gflags >=2.2.2
       run:
-        - gflags >=2.2.2
-        - sysroot_linux-64 >=2.17  # [linux64]
+        - ea-gflags >=2.2.2
     test:
       commands:
         - test -f $PREFIX/lib/libglog.so              # [linux]
